@@ -61,9 +61,15 @@
                                 @else
                                 <img src="{{ Auth::user()->foto_profile }}" alt="" width="28" height="28" class="rounded-circle me-2"><small class="text-muted">{{ Auth::user()->name }}</small>
                                 @endif
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="{{ route('kreator') }}">Kreator</a></li>
+                            </button>                            
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">        
+                                <li>
+                                    @if(Auth::user()->level == "user")
+                                    <a class="dropdown-item" href="{{ route('kreator') }}">Kreator</a>
+                                    @elseif(Auth::user()->level == "admin")
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>
+                                    @endif
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

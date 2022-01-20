@@ -14,7 +14,7 @@
                 </div>                                                            
             @endif 
             <form id="form" action="{{ route('admin.databerita.search') }}"  method="get" class="mb-2">
-                <div class="row g-2">
+                <div class="row g-1">
                     <div class="col-10 col-md-11 col-lg-11">
                         <input class="form-control rounded" type="text" name="search" placeholder="Cari Disini...">
                     </div>
@@ -52,6 +52,9 @@
                                     <td>{{ $datas->created_at }}</td>
                                     <td>
                                         @if($datas->status == "menunggu")
+                                            @if($datas->harga == NULL)
+                                                -
+                                            @else
                                             <form action="{{ url('/admin/databerita/successstatus/'. $datas->id_berita) }}" method="post">
                                                 @csrf
                                                 <input type="text" value="rilis" name="status" hidden>
@@ -62,6 +65,7 @@
                                                 <input type="text" value="gagal" name="status" hidden>
                                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>                                              
                                             </form>
+                                            @endif
                                         @else
                                             @if($datas->status == "rilis")
                                                 <span class="badge rounded-pill bg-success text-light">{{ $datas->status }}</span>

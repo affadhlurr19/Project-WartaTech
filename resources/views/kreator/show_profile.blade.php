@@ -87,6 +87,7 @@
                                         </span>
                                     @enderror
                                 </div>
+                                @if(Auth::user()->google_id == NULL)
                                 <div class="form-group mb-1">                                    
                                     <label for="">Foto Profile</label>
                                     <input type="file" class="form-control form-control-sm @error('foto_profile_new') is-invalid @enderror" name="foto_profile_new">
@@ -96,7 +97,9 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror                                    
-                                </div>                                
+                                </div>                             
+                                @else
+                                @endif   
                                 <button class="btn btn-sm btn-info mt-1" type="submit">Simpan</button>
                                 @if($data->google_id == NULL)
                                     <a href="{{ url('/kreator/profile/edit-password/'.$data->id) }}" class="btn btn-sm btn-warning mt-1">Ubah Password</a>

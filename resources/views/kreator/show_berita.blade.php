@@ -14,7 +14,7 @@
                 </div>                                                            
             @endif  
             <form id="form" action="{{ route('kreator.berita.search') }}"  method="get" class="mb-2">
-                <div class="row g-2">
+                <div class="row g-1">
                     <div class="col-10 col-md-11 col-lg-11">
                         <input class="form-control rounded" type="text" name="search" placeholder="Cari Disini...">
                     </div>
@@ -34,8 +34,9 @@
                                     <td>Judul Berita</td>
                                     <td>Tipe Berita</td>
                                     <td>Kategori</td>
-                                    <td>Tanggal Pembuatan</td>
+                                    <td>Tanggal Pembuatan</td>                                                                                                       
                                     <td>Status</td>
+                                    <td>Total Pembaca</td> 
                                     <td>Action</td>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                             <span class="badge rounded-pill bg-danger text-light">{{ $datas->status }}</span>
                                         @endif
                                     </td>
+                                    <td>{{ $datas->viewer }}</td>
                                     <td>                                        
                                         <button type="button" class="btn btn-sm btn-dark mb-1" data-bs-toggle="modal" data-bs-target="#showBerita_{{ $datas->slug }}">
                                         <i class="fas fa-eye"></i>

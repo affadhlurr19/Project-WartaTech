@@ -12,7 +12,7 @@
                 <div class="d-grid gap-2 col-5">
                     <a class="btn btn-info rounded-pill ms-3 mb-2" href="{{ route('register') }}" >Daftar Sekarang</a>
                 </div>
-            </div>            
+            </div> 
             <div class="card mb-3 mt-3">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -23,17 +23,17 @@
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active">
                             <img src="{{ asset('image/cover/'.$berita_trending_first->cover) }}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption" style="background-color:black; opacity:0.7; height:125px;">
-                                <h5>{{ $berita_trending_first->judul }}l</h5>
-                                <p>{!! $berita_trending_first->deskripsi_singkat !!}</p>
+                            <div class="carousel-caption" style="background-color:black; opacity:0.7; height:130px; margin-left:2px; margin-right:2px;">
+                                <h5 style="font-size:15px;">{{ $berita_trending_first->judul }}</h5>
+                                <div style="font-size:10px;">{!! $berita_trending_first->deskripsi_singkat !!}</div>
                             </div>
                         </div> 
                         @foreach($berita_trending as $berita_trendings)
                         <div class="carousel-item">
                             <img src="{{ asset('image/cover/'.$berita_trendings->cover) }}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption" style="background-color:black; opacity:0.7; height:125px;">
-                                <h5>{{ $berita_trendings->judul }}l</h5>
-                                <p>{!! $berita_trendings->deskripsi_singkat !!}</p>
+                            <div class="carousel-caption" style="background-color:black; opacity:0.7; height:130px; margin-left:2px; margin-right:2px;">
+                                <h5 style="font-size:15px;">{{ $berita_trendings->judul }}</h5>
+                                <div style="font-size:10px;">{!! $berita_trendings->deskripsi_singkat !!}</div>
                             </div>
                         </div>  
                         @endforeach                                              
@@ -51,17 +51,17 @@
             <div class="card mb-3 mt-3">
                 <div class="card-body">
                     <div class="col-4 col-lg-2 text-center mt-2" style="border-bottom:2px solid #788BFF;">
-                        <h5>Berita Terkini</h5>                        
-                    </div>                    
-                    <div class="col-12 col-md-12 col-lg-12 mt-4">                        
+                        <h5>Berita Terkini</h5>                                            
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 mt-4">
                         @foreach($berita_terkini as $berita_terkinis)
                         <div class="row g-0 mb-4">
                             <div class="col-4">
                                 <img src="{{ asset('image/cover/'.$berita_terkinis->cover) }}" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8">
-                                <div class="align-items-start ms-3 ">
-                                    <h4 class=""><a href="{{ url('/berita/'.$berita_terkinis->slug.'/'.Crypt::encrypt($berita_terkinis->tipe_berita)) }}" class="text-decoration-none">{{ $berita_terkinis->judul }}</a></h4>
+                                <div class="align-items-start ms-3">
+                                    <h5 class=""><a href="{{ url('/berita/'.$berita_terkinis->slug.'/'.Crypt::encrypt($berita_terkinis->tipe_berita)) }}" class="text-decoration-none">{{ $berita_terkinis->judul }}</a></h5>
                                     <div class="card-text mb-1"style="font-size:12px;">
                                         @if($berita_terkinis->nama_kategori == "News")
                                         <span class="badge bg-primary">{{ $berita_terkinis->nama_kategori }}</span>
@@ -73,7 +73,9 @@
                                         <span class="badge" style="background-color:#aa22bf;">{{ $berita_terkinis->nama_kategori }}</span>
                                         @endif 
                                     </div>
-                                    <div class="card-text mb-2" style="font-size:13px;">{!! $berita_terkinis->deskripsi_singkat !!}...</div>
+                                    <div class="card-text mb-2" style="font-size:13px;">
+                                        {!! $berita_terkinis->deskripsi_singkat !!}
+                                    </div>                                    
                                     <div class="card-text">
                                         @if($berita_terkinis->google_id == NULL)
                                         <img src="{{ asset('image/profile/'.$berita_terkinis->foto_profile) }}" class="rounded-circle" width="7%">
@@ -84,12 +86,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>   
-                        @endforeach                                                                     
+                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>                       
-        </div>
+            </div>
+        </div>        
         <div class="col-12 col-md-12 col-lg-3">
             <div class="card" style="background-color:rgb(255,255,255);">                  
                 <div class="card-body">
@@ -107,6 +109,7 @@
                             <div class="align-items-start ms-2">
                                 <h4 class="mb-1" style="font-size:14px;"><a href="{{ route('login') }}" class="text-decoration-none">{{ $berita_premiums->judul }}</a></h4>
                                 <p class="mb-1" style="font-size:12px;">
+                                    <span class="badge bg-danger">Premium</span>
                                     @if($berita_premiums->nama_kategori == "News")
                                     <span class="badge bg-primary">{{ $berita_premiums->nama_kategori }}</span>
                                     @elseif($berita_premiums->nama_kategori == "Tips & Trick")
@@ -169,7 +172,7 @@
                             <div class="row">
                                 @foreach($news as $newss)
                                 <div class="col-12 col-md-12 col-lg-4 mb-2">
-                                    <div class="card">
+                                    <div class="card" style="height:420px; max-height:420px;">
                                         <img src="{{ asset('image/cover/'.$newss->cover) }}" class="card-img-top" style="max-height:220px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="{{ url('/berita/'.$newss->slug.'/'.Crypt::encrypt($newss->tipe_berita)) }}" class="text-decoration-none">{{ $newss->judul }}</a></h5>
@@ -213,7 +216,7 @@
                             <div class="row">      
                             @foreach($tipsNtrick as $tipsNtricks)
                                 <div class="col-12 col-md-12 col-lg-4 mb-2">
-                                    <div class="card">
+                                    <div class="card" style="height:420px; max-height:420px;">
                                         <img src="{{ asset('image/cover/'.$tipsNtricks->cover) }}" class="card-img-top" style="max-height:220px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="{{ url('/berita/'.$tipsNtricks->slug.'/'.Crypt::encrypt($tipsNtricks->tipe_berita)) }}" class="text-decoration-none">{{ $tipsNtricks->judul }}</a></h5>
@@ -257,7 +260,7 @@
                             <div class="row">
                             @foreach($techNlife as $techNlifes)
                                 <div class="col-12 col-md-12 col-lg-4 mb-2">
-                                    <div class="card">
+                                    <div class="card" style="height:420px; max-height:420px;">
                                         <img src="{{ asset('image/cover/'.$techNlifes->cover) }}" class="card-img-top" style="max-height:220px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="{{ url('/berita/'.$techNlifes->slug.'/'.Crypt::encrypt($techNlifes->tipe_berita)) }}" class="text-decoration-none">{{ $techNlifes->judul }}</a></h5>
@@ -301,7 +304,7 @@
                             <div class="row">
                             @foreach($games as $game)
                                 <div class="col-12 col-md-12 col-lg-4 mb-2">
-                                    <div class="card">
+                                    <div class="card" style="height:420px; max-height:420px;">
                                         <img src="{{ asset('image/cover/'.$game->cover) }}" class="card-img-top" style="max-height:220px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="{{ url('/berita/'.$game->slug.'/'.Crypt::encrypt($game->tipe_berita)) }}" class="text-decoration-none">{{ $game->judul }}</a></h5>

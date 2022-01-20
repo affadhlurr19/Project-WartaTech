@@ -13,7 +13,7 @@
             </div>                                                            
         @endif 
         <form id="form" action="{{ route('kreator.wartapay.search') }}"  method="get" class="mb-2">
-            <div class="row g-2">
+            <div class="row g-1">
                 <div class="col-10 col-md-11 col-lg-11">
                     <input class="form-control rounded" type="text" name="search" placeholder="Cari Disini...">
                 </div>

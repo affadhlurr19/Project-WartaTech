@@ -27,7 +27,7 @@ class BeritaController extends Controller
                     ->select('berita.id_berita', 'berita.id_kategori', 'berita.id_users',
                             'berita.judul', 'kategori.nama_kategori', 'berita.created_at',
                             'berita.status', 'berita.slug', 'berita.cover', 'berita.deskripsi',
-                            'berita.tipe_berita')
+                            'berita.tipe_berita', 'berita.viewer')
                     ->where('berita.id_users', Auth::user()->id)
                     ->orderBy('berita.created_at', 'DESC')
                     ->get();
@@ -59,7 +59,7 @@ class BeritaController extends Controller
             'id_users' => 'required',
             'id_kategori' => 'required',
             'tipe_berita' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg',
+            'cover' => 'required|image|mimes:jpeg,png,jpg|dimensions:width=1280,height=720',
             'judul' => 'required|unique:berita',
             'deskripsi' => 'required'
         ]);
@@ -123,7 +123,7 @@ class BeritaController extends Controller
 
         $validate = $request->validate([
             'id_users' => 'required',
-            'id_kategori' => 'required',
+            'id_kategori' => 'required',            
             'cover_new' => 'image|mimes:jpeg,png,jpg',
             'judul' => 'required',
             'deskripsi' => 'required'
